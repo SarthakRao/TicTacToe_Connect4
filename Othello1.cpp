@@ -4,7 +4,7 @@ char play[2];
 
 void print(char arr[][10])
 {
-    cout<<"---------------------";
+    cout<<"----+-----------------";
     for(int i=0;i<=9;i++)
     {
         cout<<endl;
@@ -18,40 +18,31 @@ void print(char arr[][10])
     }
     cout<<endl;
 }
-int check(char arr[10][10], int idt, int x, int y)
+int check(char arr[10][10], int id, int x, int y)
 {
-    int flag = 0;
-    play[0]='X';
-    play[1]='O';
-    for(int i=0;i<=9;i++)
+    id=(id+1)%2;
+    int i;
+    for(i=y;arr[x][i]==play[id] && i<=9;i++);
+    if(arr[x][i]==' ')
     {
-        if(arr[x][i]==play[idt] && arr[x][y]==' ')
-            {
-                    for(int j=i;j<=x;j++)
-                    {
-                        idt=(idt+1)%2;
-                        if(arr[x][j]!=play[idt])
-                        {
-                            flag = 1;
-                        }
-                    }
-            }
-        else if (arr[i][y]==play[idt] && arr[x][y]==' ')
-            {
-                   for(int j=i;j<=x;j++)
-                    {
-                        idt=(idt+1)%2;
-                        if(arr[x][j]!=play[idt])
-                        {
-                            flag = 1;
-                        }
-                    }
-            }
-
-        return flag;
-
+        cout<<"A";
+        return 1;
     }
+    else if(arr[x][i]==play[id])
+    {
+        cout<<"B";
+        return 1;
+    }
+    else if(id=(id+1)%2 && arr[x][i]==play[id])
+    {
+        cout<<"C";
+        return 0;
+    }
+    cout<<"D";
+    return 2;
 }
+
+
 void main()
 {
     char board[10][10],player[2][50];
