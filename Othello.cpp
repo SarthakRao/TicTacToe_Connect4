@@ -2,69 +2,60 @@
 #include<conio.h>
 char play[2];
 
-void print(char arr[][10])
+void print(char arr[][8])
 {
-    cout<<"---------------------";
-    for(int i=0;i<=9;i++)
+    cout<<"-----------------";
+    for(int i=0;i<=7;i++)
     {
         cout<<endl;
-        for(int j=0;j<=9;j++)
+        for(int j=0;j<=7;j++)
         {
             cout<<"|"<<arr[i][j];
 
         }
         cout<<"|";
-        cout<<endl<<"---------------------";
+        cout<<endl<<"-----------------";
     }
     cout<<endl;
 }
-int check(char arr[10][10], int idt, int x, int y)
+int check(char arr[8][8], int id, int x, int y)
 {
-    int flag = 0;
-    play[0]='X';
-    play[1]='O';
-    for(int i=0;i<=9;i++)
+    id=(id+1)%2;
+    int i;
+    for(i=y;arr[x][i]==play[id] && i<=7;i++);
+    if(arr[x][i]==' ')
     {
-        if(arr[x][i]==play[idt] && arr[x][y]==' ')
-            {
-                    for(int j=i;j<=x;j++)
-                    {
-                        idt=(idt+1)%2;
-                        if(arr[x][j]!=play[idt])
-                        {
-                            flag = 1;
-                        }
-                    }
-            }
-        else if (arr[i][y]==play[idt] && arr[x][y]==' ')
-            {
-                   for(int j=i;j<=x;j++)
-                    {
-                        idt=(idt+1)%2;
-                        if(arr[x][j]!=play[idt])
-                        {
-                            flag = 1;
-                        }
-                    }
-            }
-
-        return flag;
-
+        cout<<"A";
+        return 1;
     }
+    else if(arr[x][i]==play[id])
+    {
+        cout<<"B";
+        return 1;
+    }
+    else if(id=(id+1)%2 && arr[x][i]==play[id])
+    {
+        cout<<"C";
+        return 0;
+    }
+    cout<<"D";
+    return 2;
 }
+
+
 void main()
 {
-    char board[10][10],player[2][50];
+    char board[8][8],player[2][50];
     int tx,ty,id=0,p=0;
-    for(int i=0;i<=9;i++)
+    for(int i=0;i<=7;i++)
     {
-        for(int j=0;j<=9;j++)
+        for(int j=0;j<=7;j++)
         {
             board[i][j]=' ';
         }
     }
-    board[4][4]='X';board[5][5]='X';
-    board[4][5]='O';board[5][4]='O';
+    board[3][3]='X';board[4][4]='X';
+    board[3][4]='O';board[4][3]='O';
     print(board);
     cout<<"Player 1: "<<endl;
     cin>>player[0];
@@ -75,7 +66,7 @@ void main()
             a:
             cout<<player[p]<<"'s turn: "<<endl<<"Enter row number and column number:"<<endl;
             cin>>tx>>ty;
-            if(tx<1 || tx>10 || ty<1 || ty>10)
+            if(tx<1 || tx>8 || ty<1 || ty>8)
             {
                 cout<<"Invalid input!"<<endl;
                 goto a;
@@ -85,9 +76,9 @@ void main()
                 goto a;
             }
 
-            for(int x=1;x<=10;x++)
+            for(int x=1;x<=8;x++)
             {
-                for(int y=1;y<=10;y++)
+                for(int y=1;y<=8;y++)
                 {
                     if(tx==x && ty==y)
                     {
