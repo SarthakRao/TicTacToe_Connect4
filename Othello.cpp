@@ -98,6 +98,6 @@ void main()
             p=(p+1)%2;
             clrscr();
             print(board);
-    }while(check(board,id,tx,ty)==0);
+    }while(1);
     getch();
 }
