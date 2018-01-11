@@ -139,8 +139,7 @@ void main()
         }
         else if(choice==3)
         {
-            cout<<"Thank you! \n\nGame by: Sarthak Rao\nVersion: 1.0.0"<<endl;
-            exit(0);
+            cout<<"Thank you! \n\nGame by: Rao&Bot\nVersion: 1.0.0"<<endl;
         }
      }
      else if(ch==2)
@@ -155,14 +154,12 @@ void main()
          }
          else
          {
-             cout<<"Thank you! \n\nGame by: Sarthak Rao\nVersion: 1.0.0"<<endl;
-             exit(0);
+             cout<<"Thank you! \n\nGame by: Rao&Bot\nVersion: 1.0.0"<<endl;
          }
      }
      else if(ch==3)
      {
-         cout<<"Thank you! \n\nGame by: Sarthak Rao\nVersion: 1.0.0"<<endl;
-         exit(0);
+         cout<<"Thank you! \n\nGame by: Rao&Bot\nVersion: 1.0.0"<<endl;
      }
      else
      {
