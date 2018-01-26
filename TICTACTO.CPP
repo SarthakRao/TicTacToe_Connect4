@@ -1,16 +1,17 @@
 #include<iostream.h>
 #include<conio.h>
 #include<process.h>
+#include<dos.h>
 void print(char board[3][3])                //Function to print the game board
 {
-	cout<<"   1 2 3"<<endl;
-	cout<<"  -------"<<endl;
-	cout<<"1 |"<<board[0][0]<<"|"<<board[0][1]<<"|"<<board[0][2]<<"|"<<endl;
-	cout<<"  -------"<<endl;
-	cout<<"2 |"<<board[1][0]<<"|"<<board[1][1]<<"|"<<board[1][2]<<"|"<<endl;
-	cout<<"  -------"<<endl;
-	cout<<"3 |"<<board[2][0]<<"|"<<board[2][1]<<"|"<<board[2][2]<<"|"<<endl;
-	cout<<"  -------"<<endl;
+	cout<<"    1   2   3 "<<endl;
+	cout<<"  -------------"<<endl;
+	cout<<"1 | "<<board[0][0]<<" | "<<board[0][1]<<" | "<<board[0][2]<<" |"<<endl;
+	cout<<"  -------------"<<endl;
+	cout<<"2 | "<<board[1][0]<<" | "<<board[1][1]<<" | "<<board[1][2]<<" |"<<endl;
+	cout<<"  -------------"<<endl;
+	cout<<"3 | "<<board[2][0]<<" | "<<board[2][1]<<" | "<<board[2][2]<<" |"<<endl;
+	cout<<"  -------------"<<endl;
 };
 int check(char arr[3][3])                   //Function to check if input move is valid or not
 {
@@ -122,12 +123,12 @@ void tictactoe()
              }while(check(board) == 1 && game(board) == 0);
              if(check(board) == 1 && game(board)==1)
              {
-                 cout<<"Its a draw!"<<endl;
+                 cout<<"\n\nIts a draw!\n\n\n"<<endl;
              }
              else
              {
                  p=(p+1)%2;
-                 cout<<player[p]<<" wins!"<<endl;
+                 cout<<"\n\n"<<player[p]<<" wins!\n\n\n"<<endl;
              }
              cout<<"1. Play again \n2. Main menu \n3. Exit"<<endl;
              cin>>choice;
@@ -139,7 +140,7 @@ void tictactoe()
         }
         else if(choice==3)
         {
-            cout<<"Thank you! \n\nGame by: Rao&Bot\nVersion: 1.0.0"<<endl;
+            cout<<"Thank you! \n\nGame by: RaoBot\nVersion: 1.0.0"<<endl;
 
         }
      }
@@ -155,13 +156,13 @@ void tictactoe()
          }
          else
          {
-             cout<<"Thank you! \n\nGame by: Rao&Bot\nVersion: 1.0.0"<<endl;
+             cout<<"Thank you! \n\nGame by: RaoBot\nVersion: 1.0.0"<<endl;
 
          }
      }
      else if(ch==3)
      {
-         cout<<"Thank you! \n\nGame by: Rao&Bot\nVersion: 1.0.0"<<endl;
+         cout<<"Thank you! \n\nGame by: RaoBot\nVersion: 1.0.0"<<endl;
 
      }
      else
@@ -195,24 +196,31 @@ void printcon4(char board[5][10])
 }
 void connect4()
 {
-    int choice,a=0,X=0,O=0;
-    char game[5][10];
+    char game[5][10],gamer[2][50];
     for(int i=0;i<5;i++)
     for(int j=0;j<10;j++)
-    game[i][j]=' ';        //to identify the non filled spaces
+    game[i][j]=' ';
+    clrscr();
+    printcon4(game);
+    int choice,a=0,X=0,O=0,id=0;
+
+    cout<<"Enter player 1's name: "<<endl;
+    cin>>gamer[0];
+    cout<<"Enter player 2's name: "<<endl;
+    cin>>gamer[1];
+    start:
+    for(int i=0;i<5;i++)
+    for(int j=0;j<10;j++)
+    game[i][j]=' ';
     clrscr();
     label2:
     printcon4(game);
-    cout<<"\n\n\n\n\tPlayer ";
-    if(ct%2==0)
-    cout<<"1: \n";
-    else
-    cout<<"2: \n";
+    cout<<gamer[id]<<"'s turn: "<<endl;
     label1:
     cout<<"\tEnter 0 to exit or enter the place to drop the coin: ";
     cin>>choice;
     if(choice==0)
-    exit(0);
+    cout<<"Thank you! \n\n\nGame by: RaoBot \nVersion: 1.0.0"<<endl;
     else if(choice<0||choice>10)
     {
      printcon4(game);
@@ -341,31 +349,49 @@ void connect4()
         if(X)
         {
              printcon4(game);
-             cout<<"\n\n\n\n\t\t\t Player 1 wins!!";
+             cout<<gamer[0]<<" wins!";
         }
         else if(O)
         {
              printcon4(game);
-             cout<<"\n\n\n\n\t\t\t Player 2 wins!!";
-
+             cout<<gamer[1]<<" wins!";
         }
         else
         {
              ct++;
+             id=(id+1)%2;
              goto label2;
         }
+        char ch;
+        cout<<"\n\nPlay again? (Y/N)"<<endl;
+        option:
+        cin>>ch;
+        if(ch=='y' || ch=='Y')
+            goto start;
+        else if(ch=='N' || ch=='n')
+        {
+            cout<<"Thank you! \n\nGame by: RaoBot\nVersion 1.0.0"<<endl;
+        }
+        else
+            {cout<<"Invalid input!"<<endl;
+            goto option;}
+
+
     }
 }
 void main()
 {
+    clrscr();
     int c;
     cout<<"********** GAME ZONE **********"<<endl;
-    cout<<"Select the game you want to play : \n1.TicTacToe \n2.Connect 4"<<endl;
+    cout<<"Select the game you want to play : \n1.TicTacToe \n2.Connect 4 \n3. Exit"<<endl;
     cin>>c;
     if(c==1)
         tictactoe();
     else if(c==2)
         connect4();
+    else if(c==3)
+        cout<<"Thank you! \n\nGame by: RaoBot\nVersion 1.0.0"<<endl;
     else
         cout<<"Invalid input!"<<endl;
     getch();

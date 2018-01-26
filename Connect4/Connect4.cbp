@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-w" />
 		</Compiler>
+		<Unit filename="Con4.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
