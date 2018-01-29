@@ -209,8 +209,8 @@ void connect4()
     cout<<"Enter player 2's name: "<<endl;
     cin>>gamer[1];
     start:
-    for(int i=0;i<5;i++)
-    for(int j=0;j<10;j++)
+    for( i=0;i<5;i++)
+    for( int j=0;j<10;j++)
     game[i][j]=' ';
     clrscr();
     label2:
