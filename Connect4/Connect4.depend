@@ -1,5 +1,0 @@
-# depslib dependency file v1.0
-1516410040 source:c:\turboc++\disk\turboc3\bin\tictactoe\connect4\con4.cpp
-	<conio.h>
-	<iostream.h>
-

@@ -34,3 +34,7 @@
 TicTacToe
 Othello
 *.BAK
+Test
+Connect4
+*~
+Othello*
